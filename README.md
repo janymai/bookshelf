@@ -25,13 +25,13 @@ Bookshelf app use Lotus Framework
   * ISBN
   * Pages
   * Year
-  * Languge
-  * File zie
+  * Language
+  * File size
   * File type
 
 * Button save to my library
 
-**My Librabry**
+**My Library**
 
 * User will see the books user save to Library and user can edit title or description.
 
@@ -188,4 +188,3 @@ Bookshelf app use Lotus Framework
 
 * Test case:
   * Test current user
-  
