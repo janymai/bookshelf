@@ -144,11 +144,16 @@ Bookshelf app use Lotus Framework
 
 ### Sprint 3 (1 week)
 
-* Make behavior save book to my library
-  * User will save the books to my library
-    > Action lib/create
-  * When book belong to the user's library. User can edit book's title and description
-    > Action lib/:id/edit
+* Make Admin page:
+  * Hardcoded to user become admin:
+    > Username: admin
+    > Password: 12345678
+  * Admin can create a book:
+    > Action books/create
+  * Admin can delete a book:
+    > Action books/destroy
+  * Admin can update a book:
+    > Action books/update
 
 * Test case:
   * User will see all the books
