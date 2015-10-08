@@ -156,33 +156,9 @@ Bookshelf app use Lotus Framework
     > Action books/update
 
 * Test case:
-  * User will see all the books
-    * **Attributes**:
-      > id         
-
-      > title      
-
-      > description
-
-    * **Request** Attributes including:
-      > id         
-
-      > title      
-
-      > description
-
-    * **Type of data**:
-      > id         : integer
-
-      > title      : string
-
-      > description: string
-
-    * **Save**:
-      > When save book in to lib -> book in database total have to grow up by 1
-    * **Edit**:
-      > Edit title title should be change
-      > Edit description should be change
+  * Book create total will be increase
+  * Book destroy total will be decrease
+  * Book update information will change
 
 ## Sprint 4 (1 week)
 
@@ -193,3 +169,18 @@ Bookshelf app use Lotus Framework
 
 * Test case:
   * Test current user
+
+## Sprint 5 (1 week)
+
+* Pagination for products list
+* I18n
+
+## Sprint 6 (1 week)
+
+* Deployment on heroku
+* Asset compilation
+
+## Sprint 7 (1 week)
+
+* Caching
+
