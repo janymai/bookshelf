@@ -164,7 +164,6 @@ Bookshelf app use Lotus Framework
 
 * Make login/logout for user
   * Create auth_token by the way use `SecureRandom.base64` to generate
-  * Add it into header
   * Make condition if user is current_user to use action in Bookshelf app
 
 * Test case:
