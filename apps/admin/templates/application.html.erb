@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookshelf</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bookshelf/main.css" />
+    <script src="/stylesheets/jquery/dist/jquery.min.js"></script>
+  </head>
+  <body>
+    <header class="navbar navbar-static-top lotus-bookshelf-header bg-info">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-9 navbar-header">
+            <h1><a href="/">Bookshelf</a></h1>
+          </div>
+
+          <div class="col-xs-3">
+            <button type="button" class="btn btn-primary pull-right">Sign in</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="lotus-bookshelf-container">
+      <%= yield %>
+    </main>
+
+    <footer class="lotus-bookshelf-footer">
+      <div class="container">
+        <ul class="lotus-footer-link">
+          <li><a href="http://lotusrb.org">Website</a></li>
+          <li><a href="http://lotusrb.org/guides">Guides</a></li>
+          <li><a href="http://www.rubydoc.info/gems/lotusrb">API docs</a></li>
+          <li><a href="https://github.com/lotus/lotus">Source code</a></li>
+          <li><a href="https://gitter.im/lotus/chat">Chat</a></li>
+        </ul>
+      </div>
+    </footer>
+    <script src="/stylesheets/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

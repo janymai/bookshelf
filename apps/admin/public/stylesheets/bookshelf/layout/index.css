@@ -1,0 +1,19 @@
+.lotus-book-container .thumbnail {
+  height: 350px;
+}
+
+.lotus-bookshelf-container {
+  margin-top: 100px;
+}
+
+.lotus-book-list span {
+  float: right;
+}
+
+.lotus-book-list a {
+  margin-left: 40px;
+}
+
+.lotus-book-create .btn {
+  margin-bottom: 38px;
+}
