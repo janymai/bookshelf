@@ -8,3 +8,9 @@ end
 
 task default: :test
 task spec: :test
+
+namespace :db do
+  task :seed do
+    load 'db/seed.rb'
+  end
+end
