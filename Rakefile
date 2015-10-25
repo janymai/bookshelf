@@ -1,5 +1,7 @@
 require 'rake'
 require 'rake/testtask'
+require 'lotus/environment'
+require Lotus::Environment.new.env_config
 
 Rake::TestTask.new do |t|
   t.pattern = 'spec/**/*_spec.rb'
