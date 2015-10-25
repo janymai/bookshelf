@@ -14,4 +14,6 @@ collection :books do
   attribute :languages, String
   attribute :file_size, String
   attribute :file_type, Integer
+  attribute :created_at, DateTime
+  attribute :updated_at, DateTime
 end
