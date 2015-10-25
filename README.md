@@ -31,10 +31,39 @@ lotus g action admin book#dashboard
 
 ### Create entity
 
+At lib/bookshelf/entities create book.rb
+We will define attributes need to create a book at entities.
+
+```
+require 'lotus/entity'
+
+class Book
+  include Lotus::Entity
+  attributes :image_url, :link, :description, :publisher, :by, :isbn, :year,
+             :page, :languages, :file_size, :file_type, :created_at, :updated_at
+end
+```
+
 ### Create repository
+
+At lib/bookshelf/repository create book.rb
+Repository help to handle with data by query
+
+```
+require 'lotus/repository'
+
+class BookRepository
+  include Lotus::Repository
+end
+```
 
 ### Add Gemfile sqlite3
 
+```
+group :development, :test do
+  gem 'sqlite3'
+end
+```
 ### Create Database
 
 At
