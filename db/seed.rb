@@ -1,48 +1,28 @@
 BookRepository.clear
+20.times do
+  book_attr = {
+                image_url: 'http://it-ebooks.org/img/books/wrox/professional_php6.jpg',
+                link: 'http://it-ebooks.org/book/wrox/professional_php6',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                              qui officia deserunt mollit anim id est laborum.',
+                publisher: 'Wrox',
+                by: 'Ed Lecky-Thompson, Steven D. Nowicki',
+                isbn: '9780470395097',
+                year: DateTime.new(2009),
+                pages: 744,
+                languages: 'English',
+                file_size: '10.2MB',
+                file_type: 1,
 
-[
-  {
-    image_url: 'http://it-ebooks.org/img/books/wrox/professional_php6.jpg',
-    link: 'http://it-ebooks.org/book/wrox/professional_php6',
-    description: 'Publishing in tandem with the long-awaited release of PHP 6,
-                  this book reveals the inside scoop for pushing the limits of
-                  how to maximize the full feature set of PHP 6. You will learn
-                  how to use PHP 6 in the larger scheme of enterprise-class
-                  software development and practical examples and behind-the-scenes
-                  information will improve your skills for designing and building better
-                  large-scale, high-performance platforms using PHP 6.',
-    publisher: 'Wrox',
-    by: 'Ed Lecky-Thompson, Steven D. Nowicki',
-    isbn: '9780470395097',
-    year: DateTime.new(2009),
-    pages: 744,
-    languages: 'English',
-    file_size: '10.2MB',
-    file_type: 1,
+                created_at: DateTime.new(2015,2,4,4,5,6,'+7'),
+                updated_at: DateTime.new(2015,2,4,4,5,6,'+7')
+              }
 
-    created_at: DateTime.new(2015,4,4,4,5,6,'+7'),
-    updated_at: DateTime.new(2015,4,4,4,5,6,'+7'),
-  },
-  {
-    image_url: 'http://it-ebooks.org/img/books/wrox/professional_php6.jpg',
-    link: 'http://it-ebooks.org/book/wrox/professional_php6',
-    description: 'Publishing in tandem with the long-awaited release of PHP 6,
-                  this book reveals the inside scoop for pushing the limits of
-                  how to maximize the full feature set of PHP 6. You will learn
-                  how to use PHP 6 in the larger scheme of enterprise-class
-                  software development and practical examples and behind-the-scenes
-                  information will improve your skills for designing and building better
-                  large-scale, high-performance platforms using PHP 6.',
-    publisher: 'Wrox',
-    by: 'Ed Lecky-Thompson, Steven D. Nowicki',
-    isbn: '9780470395097',
-    year: DateTime.new(2009),
-    pages: 744,
-    languages: 'English',
-    file_size: '10.2MB',
-    file_type: 1,
-
-    created_at: DateTime.new(2015,4,4,4,5,6,'+7'),
-    updated_at: DateTime.new(2015,4,4,4,5,6,'+7'),
-  }
-]
+  book = Book.new(book_attr)
+  BookRepository.persist(book)
+end
