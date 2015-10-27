@@ -10,7 +10,7 @@ collection :books do
   attribute :by, String
   attribute :isbn, String
   attribute :year, DateTime
-  attribute :page, Integer
+  attribute :pages, Integer
   attribute :languages, String
   attribute :file_size, String
   attribute :file_type, Integer
