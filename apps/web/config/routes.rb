@@ -1,4 +1,3 @@
-get '/book', to: 'book#detail'
-get '/', to: 'book#index'
-# Configure your routes here
-# See: http://www.rubydoc.info/gems/lotus-router/#Usage
+get '/', to: 'books#index'
+get '/books', to: 'books#show'
+resources :books, only: [:index, :show]

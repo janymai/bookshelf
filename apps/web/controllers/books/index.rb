@@ -1,4 +1,4 @@
-module Web::Controllers::Book
+module Web::Controllers::Books
   class Index
     include Web::Action
     expose :books
