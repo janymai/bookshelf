@@ -180,6 +180,24 @@ end
 
 ### Render all book on view
 
+#### Get book from controller
+apps/web/contrllers/book/index.rb
+
+```
+module Web::Controllers::Books
+  class Index
+    include Web::Action
+    expose :books // expose @books into books (use books to render at template)
+
+    def call(params)
+      @books = BookRepository.all
+    end
+  end
+end
+```
+
+#### Render book at template
+apps/web/templates/book/index.html.rb
 ```
 <div class="container lotus-book-container">
 
@@ -195,6 +213,136 @@ end
         </div>
       <% end %>
     <% end %>
+  </div>
+</div>
+```
+
+### See book detail
+
+#### At config update routes
+apps/web/config/router.rb
+
+```
+get '/books', to: 'books#show'
+```
+
+#### Get book from controller
+apps/web/contrllers/book/show.rb
+
+```
+module Web::Controllers::Books
+  class Show
+    include Web::Action
+    expose :book
+
+    params do
+      param :id, type: Integer, presence: true
+    end
+
+    def call(params)
+      @book = BookRepository.find(book_id)
+    end
+
+    private
+
+    def book_id
+      params.get(:id)
+    end
+  end
+end
+
+```
+
+#### Render book at template
+apps/web/templates/book/show.html.rb
+```
+<div class="container" id="book-<%= book.id %>">
+  <div class="row">
+    <div class="col-md-4 lotus-book-container">
+      <a href="#" class="thumbnail">
+        <img src="../public/images/image-default.jpg" alt="lotus bookshelf">
+      </a>
+    </div>
+
+    <div class="col-md-7 col-md-offset-1">
+      <h2 class="page-header">Description</h2>
+      <div>
+        <p><big><%= book.description %></big></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-offset-5 col-md-7">
+      <h2 class="page-header">Book Detail</h2>
+
+      <div class="">
+        <div class="row">
+          <div class="col-md-5">
+            <p><big>Publisher</big></p>
+          </div>
+          <div class="col-md-7">
+            <p><big><%= book.publisher %></big></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <p><big>Author</big></p>
+          </div>
+          <div class="col-md-7">
+            <p><big><%= book.by %></big></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <p><big>ISBN</big></p>
+          </div>
+          <div class="col-md-7">
+            <p><big><%= book.isbn %></big></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <p><big>Pages</big></p>
+          </div>
+          <div class="col-md-7">
+            <p><big><%= book.pages %></big></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <p><big>Year</big></p>
+          </div>
+          <div class="col-md-7">
+            <p><big><%= book.year.strftime("%Y") %>MB</big></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <p><big>Language</big></p>
+          </div>
+          <div class="col-md-7">
+            <p><big><%= book.languages %></big></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <p><big>File size</big></p>
+          </div>
+          <div class="col-md-7">
+            <p><big><%= book.file_size %></big></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <p><big>File type</big></p>
+          </div>
+          <div class="col-md-7">
+            <p><big><%= book.file_type %></big></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 ```
