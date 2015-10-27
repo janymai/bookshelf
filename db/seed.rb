@@ -16,7 +16,7 @@ BookRepository.clear
                 year: DateTime.new(2009),
                 pages: 744,
                 languages: 'English',
-                file_size: '10.2MB',
+                file_size: '10.2',
                 file_type: 1,
 
                 created_at: DateTime.new(2015,2,4,4,5,6,'+7'),
