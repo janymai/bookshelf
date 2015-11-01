@@ -532,3 +532,21 @@ apps/web/templates/book/show.html.rb
   </div>
 </div>
 ```
+## ADMIN Page
+
+### Add authenticate for admin
+
+in `apps/admin/application.rb` trong block config define
+
+```
+# authenticate
+middleware.use Rack::Auth::Basic, "Protected Area" do |username, password|
+  username == 'admin' && password == ENV['ADMIN_PASSWORD']
+end
+```
+
+### Add environment variable for admin add .env/development
+
+```
+ADMIN_PASSWORD="12345678"
+```

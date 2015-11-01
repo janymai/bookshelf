@@ -199,6 +199,11 @@ module Admin
       view.prepare do
         include Lotus::Helpers
       end
+
+      # authenticate
+      # middleware.use Rack::Auth::Basic, "Protected Area" do |username, password|
+      #   username == 'admin' && password == ENV['ADMIN_PASSWORD']
+      # end
     end
 
     ##
