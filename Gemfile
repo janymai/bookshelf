@@ -8,6 +8,10 @@ gem 'lotus-model', '~> 0.5'
 
 gem 'zurb-foundation', '~> 4.3.2'
 
+group :development, :test do
+  gem 'sqlite3'
+  gem 'byebug', require: false
+end
 
 group :test do
   gem 'minitest'

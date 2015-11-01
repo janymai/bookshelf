@@ -1,0 +1,14 @@
+<div class="container lotus-book-container">
+
+  <div class="row">
+    <% if books.any? %>
+      <% books.each do |book|%>
+        <div class="col-sm-6 col-md-3">
+          <a href="<%= Web::Routes.url(:books, id: book.id) %>" class="thumbnail"><%= book.id %>
+            <img src="<%= book.image_url %>" alt="lotus bookshelf">
+          </a>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
