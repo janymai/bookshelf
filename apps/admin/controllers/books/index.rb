@@ -1,5 +1,5 @@
-module Admin::Controllers::Book
-  class Dashboard
+module Admin::Controllers::Books
+  class Index
     include Admin::Action
 
     def call(params)

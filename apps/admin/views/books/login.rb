@@ -1,4 +1,4 @@
-module Admin::Views::Book
+module Admin::Views::Books
   class Login
     include Admin::View
   end

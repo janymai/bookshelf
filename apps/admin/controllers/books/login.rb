@@ -1,5 +1,5 @@
 require 'byebug'
-module Admin::Controllers::Book
+module Admin::Controllers::Books
   class Login
     include Admin::Action
 
