@@ -1,3 +1,4 @@
+
 # bookshelf
 Bookshelf app use Lotus Framework
 
@@ -296,6 +297,32 @@ lotus db create
 ```
 
 ### Generator migrate
+
+```
+lotus g migration create_books
+```
+At bookshelf/db/migrations/[prefix]_create_books.rb we create table books like below:
+```
+collection :books do
+  entity Book
+  repository BookRepository
+
+  attribute :id, Integer
+  attribute :image_url, String
+  attribute :link, String
+  attribute :description, String
+  attribute :publisher, String
+  attribute :by, String
+  attribute :isbn, String
+  attribute :year, DateTime
+  attribute :pages, Integer
+  attribute :languages, String
+  attribute :file_size, String
+  attribute :file_type, Integer
+  attribute :created_at, DateTime
+  attribute :updated_at, DateTime
+end
+```
 
 ### Apply DB
 
