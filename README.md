@@ -559,21 +559,216 @@ apps/web/templates/book/show.html.rb
   </div>
 </div>
 ```
-## ADMIN Page
+### ADMIN Page
 
-### Add authenticate for admin
+## Create table user to save user data
 
-in `apps/admin/application.rb` trong block config define
+We will create table user with 3 fields:
+* name
+* email
+* password_digest
+
+at entity bookshelf/lib/booshelf/entities create file user.rb
 
 ```
-# authenticate
-middleware.use Rack::Auth::Basic, "Protected Area" do |username, password|
-  username == 'admin' && password == ENV['ADMIN_PASSWORD']
+require 'lotus/entity'
+
+class User
+  include Lotus::Entity
+  include BCrypt
+
+  attributes :name, :email, :password_digest
+
+  def password
+    @password ||= Password.new(password_digest)
+  end
+
+  def password=(password)
+    @password = Password.create(password)
+    self.password_digest = @password
+  end
 end
 ```
 
-### Add environment variable for admin add .env/development
+At bookshelf/lib/config/mapping.rb add
 
 ```
-ADMIN_PASSWORD="12345678"
+collection :users do
+  entity User
+  repository UserRepository
+
+  attribute :id, Integer
+  attribute :name, String
+  attribute :email, String
+  attribute :password_digest, String
+end
+```
+
+
+## Add authenticate for admin
+
+### Generator Admin app
+```
+lotus g app admin
+```
+
+### Generator sessions for admin
+
+Manage user via sessions.
+
+To handle use sessions in App we have to comment out. `bookshelf/apps/admin/application.rb`
+
+```
+controller.prepare do
+  include MyAuthentication # included in all the actions
+  before :authenticate!    # run an authentication before callback
+end
+```
+
+We need a form login. Create login form via sessions#new
+
+```
+lotus g action admin sessions#new
+```
+After create session#new
+we check config routes at `apps/admin/config/routes.rb`
+Define sessions's resource
+
+```
+resources :sessions
+```
+when we declare resources :sessions. It will generates routes below:
+
+| Verb           | Path               | Action            | Name           |
+| :------------- | :-------------     | :-------------    | :------------- |
+|GET             | /sessions	        | Sessions::Index   | :index         |
+|GET             | /sessions/:id	    | Sessions::Show	  | :show	         |
+|GET             | /sessions/new	    | Sessions::New	    | :new	         |
+|POST            | /sessions	        | Sessions::Create	| :create	       |
+|GET             | /sessions/:id/edit | Sessions::Edit	  | :edit	         |
+|PATCH           | /sessions/:id	    | Sessions::Update	| :update	       |
+|DELETE          | /sessions/:id	    | Sessions::Destroy | :destroy	     |
+
+to make `/sessions/new` sense clear we will change `session/new` into `/login`
+
+```
+get '/login', to: 'sessions#new'
+```
+When we define at admin all of link should define with prefix admin
+ex: we will have a link `http://localhost:2300/admin/login`
+At bookshelf/apps/templates/sessions/new.html.erb
+```
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <%=
+        form_for :user, routes.sessions_path do
+          div class: 'form-group' do
+            label :email
+            text_field :email, required: true, class: 'form-control', placeholder: 'email'
+          end
+          div class: 'form-group' do
+            label :password
+            text_field :password, required: true, type: 'password', class: 'form-control', placeholder: 'Password'
+          end
+          submit 'Log In', class: 'btn btn-default'
+        end
+      %>
+    </div>
+  </div>
+</div>
+```
+When we login we implement action check user at create method.
+We will check user is admin at admin action create
+
+### Generate admin create action
+```
+lotus g action admin sessions#create
+```
+### Check user is admin
+
+At bookshelf/apps/admin/application.rb
+
+We define a module to check authenticate
+
+```
+module MyAuthentication
+  def authenticate!
+    current_user
+  end
+
+  def login(user)
+    session[:user_id] = user.id
+  end
+
+  def logged_in?
+    !@current_user.nil?
+  end
+
+  def current_user
+    @current_user ||= UserRepository.find(session[:user_id])
+  end
+end
+```
+
+### Finding the user is Admin
+
+At bookshelf/lib/repository/user.rb to get user
+
+```
+require 'lotus/repository'
+
+class UserRepository
+  include Lotus::Repository
+
+  def self.user(email, password)
+    query do
+      where(email: email, password_digest: password)
+    end.first
+  end
+end
+```
+
+
+### At bookshelf/app/admin/controllers/sessions/create.rb
+
+```
+module Admin::Controllers::Sessions
+  class Create
+    include Admin::Action
+    include MyAuthentication
+
+    def call(params)
+
+      email = params[:user]["email"]
+      password = params[:user]["password"]
+      user = UserRepository.user(email,password).first
+
+      if user
+        login(user)
+        redirect_to '/admin/books'
+      else
+        redirect_to '/'
+      end
+    end
+  end
+end
+```
+### Run Demo with login admin
+```
+email: admin@lotus.com
+pass: 12345678
+```
+
+It work okay but when we type should decode password.
+To do it we will use with gem `BCrypt`
+
+### Add gem to decode password
+
+```
+gem 'bcrypt'
+```
+At terminal install it
+```
+bundler install
 ```
