@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-xs-12">
       <%=
-        form_for :user, method: :post do
+        form_for :user, routes.sessions_path do
           div class: 'form-group' do
-            label :name
-            text_field :name, required: true, class: 'form-control', placeholder: 'Name'
+            label :email
+            text_field :email, required: true, class: 'form-control', placeholder: 'email'
           end
           div class: 'form-group' do
             label :password
-            text_field :password, required: true, class: 'form-control', placeholder: 'Password'
+            text_field :password, required: true, type: 'password', class: 'form-control', placeholder: 'Password'
           end
           submit 'Log In', class: 'btn btn-default'
         end

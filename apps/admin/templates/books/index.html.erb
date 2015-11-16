@@ -1,84 +1,21 @@
 <div class="container lotus-book-container">
   <div class="lotus-book-create">
-    <!--  Dua vao link nay http://lotusrb.org/guides/command-line/routes/
-      thi routes.url(:new_books) nhung neu :new_books thi se loi
-      khi chuyen thanh routes.url(:new_book) thi work duoc
-    -->
     <%= link_to 'Create A New Book', routes.url(:new_book), class: 'btn btn-lg btn-primary' %>
   </div>
   <div>
-    <ul class="list-group lotus-book-list">
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-      <li class="list-group-item">
-        Cras justo odio
-        <span>
-          <a>Edit</a>
-          <a>Delete</a>
-        <span>
-      </li>
-    </ul>
+    <% if books.any? %>
+      <ul class="list-group lotus-book-list">
+        <% books.each do |book|%>
+          <li class="list-group-item">
+            <%= book.link %>
+            <span>
+              <a>Edit</a>
+              <a>Delete</a>
+            <span>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
   <div>
     <nav>

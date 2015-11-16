@@ -17,3 +17,7 @@
 .lotus-book-create .btn {
   margin-bottom: 38px;
 }
+
+.flex-box {
+  flex: 1;
+}

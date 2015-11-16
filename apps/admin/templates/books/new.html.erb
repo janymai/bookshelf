@@ -9,47 +9,57 @@
 
         div class: 'form-group' do
           label :description
-          text_field :name, required: true, class: 'form-control', id: 'description', placeholder: 'Description'
+          text_field :description, required: true, class: 'form-control', id: 'description', placeholder: 'Description'
         end
 
+        # div class: 'form-group' do
+        #   label :file
+        #   file_field :file, id: 'file'
+        # end
+
         div class: 'form-group' do
-          label :file
-          file_field :file, id: 'file'
+          label :link
+          text_field :link, required: true, class: 'form-control', id: 'link', placeholder: 'Link'
         end
 
         div class: 'form-group' do
           label :publisher
-          text_field :name, required: true, class: 'form-control', id: 'publisher', placeholder: 'Publisher'
+          text_field :publisher, required: true, class: 'form-control', id: 'publisher', placeholder: 'Publisher'
         end
 
         div class: 'form-group' do
           label :author
-          text_field :name, required: true, class: 'form-control', id: 'author', placeholder: 'Author'
+          text_field :author, required: true, class: 'form-control', id: 'author', placeholder: 'Author'
         end
 
         div class: 'form-group' do
           label :isbn
-          text_field :name, required: true, class: 'form-control', id: 'isbn', placeholder: 'ISBN'
+          text_field :isbn, required: true, class: 'form-control', id: 'isbn', placeholder: 'ISBN'
         end
 
         div class: 'form-group' do
           label :pages
-          text_field :name, required: true, class: 'form-control', id: 'pages', placeholder: 'Pages'
+          number_field :pages, required: true, class: 'form-control', id: 'pages', placeholder: 'Pages'
         end
 
         div class: 'form-group' do
           label :year
-          text_field :name, required: true, class: 'form-control', id: 'year', placeholder: 'Year'
+          text_field :year, required: true, class: 'form-control', id: 'year', placeholder: 'Year'
         end
 
         div class: 'form-group' do
           label :language
-          text_field :name, required: true, class: 'form-control', id: 'language', placeholder: 'Language'
+          text_field :language, required: true, class: 'form-control', id: 'language', placeholder: 'Language'
         end
 
         div class: 'form-group' do
           label :size
-          text_field :name, required: true, class: 'form-control', id: 'size', placeholder: 'Size'
+          text_field :file_size, required: true, class: 'form-control', id: 'size', placeholder: 'Size'
+        end
+
+        div class: 'form-group' do
+          label :type
+          number_field :file_type, required: true, class: 'form-control', id: 'type', placeholder: 'Type'
         end
 
         div class: 'form-group' do
