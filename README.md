@@ -742,7 +742,7 @@ module Admin::Controllers::Sessions
 
       email = params[:user]["email"]
       password = params[:user]["password"]
-      user = UserRepository.user(email,password).first
+      user = UserRepository.user(email,password)
 
       if user
         login(user)
@@ -772,3 +772,28 @@ At terminal install it
 ```
 bundler install
 ```
+At bookshelf/lib/bookshelf/entities/user.rb, add bcrypt to decode password
+
+```
+require 'lotus/entity'
+
+class User
+  include Lotus::Entity
+  include BCrypt
+
+  attributes :name, :email, :password_digest
+
+  def password
+    @password ||= Password.new(password_digest)
+  end
+
+  def password=(password)
+    @password = Password.create(password)
+    self.password_digest = @password
+  end
+end
+```
+
+### Done
+
+We finish login task by using Lotus session
