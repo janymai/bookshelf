@@ -1,3 +1,14 @@
+UserRepository.clear
+user_attr = {
+  name: 'admin',
+  email: 'admin@lotus.com',
+  password: '12345678'
+}
+
+user = User.new(user_attr)
+UserRepository.persist(user)
+
+# create book
 BookRepository.clear
 20.times do
   book_attr = {
