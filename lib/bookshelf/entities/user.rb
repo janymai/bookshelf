@@ -1,4 +1,5 @@
 require 'lotus/entity'
+require 'bcrypt'
 
 class User
   include Lotus::Entity
