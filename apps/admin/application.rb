@@ -15,7 +15,6 @@ module MyAuthentication
   end
 
   def current_user
-    byebug
     @current_user ||= UserRepository.find(session[:user_id])
   end
 end

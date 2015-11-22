@@ -11,7 +11,6 @@ module Admin::Controllers::Sessions
       user = UserRepository.user(email,password)
 
       if user
-        byebug
         login(user)
         redirect_to '/admin/books'
       else
