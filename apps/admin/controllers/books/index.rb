@@ -1,8 +1,7 @@
-require 'byebug'
 module Admin::Controllers::Books
   class Index
     include Admin::Action
-    include MyAuthentication
+    include SessionAuthentication
 
     expose :books
 

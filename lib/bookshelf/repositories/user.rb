@@ -3,9 +3,9 @@ require 'lotus/repository'
 class UserRepository
   include Lotus::Repository
 
-  def self.user(email, password)
+  def self.find_by_email(email)
     query do
-      where(email: email, password_digest: password)
+      where(email: email)
     end.first
   end
 end

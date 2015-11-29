@@ -1,12 +1,16 @@
 require 'lotus/helpers'
-require 'byebug'
 
-module MyAuthentication
+module SessionAuthentication
+
+  def initialize(repository: UserRepository)
+    @repository = repository
+  end
+
   def authenticate!
     current_user
   end
 
-  def login(user)
+  def save_user_to_session(user)
     session[:user_id] = user.id
   end
 
@@ -15,7 +19,7 @@ module MyAuthentication
   end
 
   def current_user
-    @current_user ||= UserRepository.find(session[:user_id])
+    @current_user ||= @repository.find(session[:user_id])
   end
 end
 
@@ -207,7 +211,7 @@ module Admin
       #
       # See: http://www.rubydoc.info/gems/lotus-controller#Configuration
       controller.prepare do
-        include MyAuthentication # included in all the actions
+        include SessionAuthentication # included in all the actions
         before :authenticate!    # run an authentication before callback
       end
 

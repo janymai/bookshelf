@@ -1,7 +1,8 @@
 module Admin::Controllers::Books
   class Create
     include Admin::Action
-    include MyAuthentication
+    include SessionAuthentication
+
     params do
       param :book do
         param :image_url, presence: true
@@ -19,8 +20,12 @@ module Admin::Controllers::Books
     end
 
     def call(params)
-      create_book
-      redirect_to routes.url(:books)
+      if logged_in?
+        create_book
+        redirect_to routes.path(:books)
+      else
+        redirect_to routes.path(:login)
+      end
     end
 
     private
@@ -30,7 +35,8 @@ module Admin::Controllers::Books
     end
 
     def create_book
-      Book.new(book_params)
+      book = Book.new(book_params)
+      BookRepository.create(book)
     end
   end
 end
