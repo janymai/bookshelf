@@ -7,11 +7,24 @@
       <ul class="list-group lotus-book-list">
         <% books.each do |book|%>
           <li class="list-group-item">
-            <%= book.link %>
-            <span>
-              <button>Edit</button>
-              <button>Delete</button>
-            <span>
+            <div class="row">
+              <div class="col-xs-12 col-sm-10">
+                <p><%= book.link %></p>
+              </div>
+              <div class="col-xs-12 col-sm-2">
+                <div class="pull-right">
+                  <button class="btn btn-primary js- item__edit" data-url="/items/<%= book.id %>">Edit</button>
+                  <!-- <button class="btn btn-primary js- item__edit" data-url="/items/<%= book.id %>">Edit</button> -->
+                  <button class="btn btn-danger js- item__delete" data-url="/items/<%= book.id %>">Delete</button>
+                </div>
+
+                <!-- #aja
+                $(document).on('.js-.item__delete', (event) => {
+                  ajax(type: 'DELETE', url, { itemID: 1})
+                }) -->
+
+              <div>
+            </div>
           </li>
         <% end %>
       </ul>
