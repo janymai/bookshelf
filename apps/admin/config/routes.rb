@@ -1,4 +1,5 @@
 get '/sessions', to: 'sessions#create'
 get '/login', to: 'sessions#new'
-resources :books, except: [:show]
+# get '/books', to: 'books#destroy'
+resources :books
 resources :sessions

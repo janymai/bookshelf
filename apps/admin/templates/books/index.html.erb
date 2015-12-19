@@ -13,16 +13,9 @@
               </div>
               <div class="col-xs-12 col-sm-2">
                 <div class="pull-right">
-                  <button class="btn btn-primary js- item__edit" data-url="/items/<%= book.id %>">Edit</button>
-                  <!-- <button class="btn btn-primary js- item__edit" data-url="/items/<%= book.id %>">Edit</button> -->
-                  <button class="btn btn-danger js- item__delete" data-url="/items/<%= book.id %>">Delete</button>
+                  <button class="btn btn-primary js- item__edit" data-url="books/<%= book.id %>">Edit</button>
+                  <button class="btn btn-danger js- item__delete" data-url="books/<%= book.id %>" data-csrf-token="<%= this.csrf_token %>">Delete</button>
                 </div>
-
-                <!-- #aja
-                $(document).on('.js-.item__delete', (event) => {
-                  ajax(type: 'DELETE', url, { itemID: 1})
-                }) -->
-
               <div>
             </div>
           </li>
