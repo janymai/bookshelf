@@ -2,19 +2,10 @@
   <div class="row">
     <%=
       form_for :book, routes.path(:books) do
-        div class: 'form-group' do
-          label :name
-          text_field :name, required: true, class: 'form-control', id: 'name', placeholder: 'Name'
-        end
 
         div class: 'form-group' do
           label :description
           text_area :description, required: true, class: 'form-control', id: 'description', placeholder: 'Description'
-        end
-
-        div class: 'form-group' do
-          label :file
-          file_field :file, id: 'file'
         end
 
         div class: 'form-group' do

@@ -7,6 +7,7 @@ $('.js-.item__delete').on('click', function(event) {
 })
 
 $(document).on('itemDeleteAction', function(event, data) {
+  console.log(data.action);
   $.ajax({
     url: data.action,
     data: {
