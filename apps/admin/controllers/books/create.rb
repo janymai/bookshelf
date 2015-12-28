@@ -5,6 +5,7 @@ module Admin::Controllers::Books
 
     params do
       param :book do
+        param :name, presence: true
         param :image_url, presence: true
         param :link, presence: true
         param :description, presence: true

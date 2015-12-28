@@ -3,6 +3,7 @@ collection :books do
   repository BookRepository
 
   attribute :id, Integer
+  attribute :name, String
   attribute :image_url, String
   attribute :link, String
   attribute :description, String

@@ -324,6 +324,11 @@ collection :books do
 end
 ```
 
+### Migrate
+```
+lotus db migrate
+```
+If make sure push code on production we will apply data
 ### Apply DB
 
 ```

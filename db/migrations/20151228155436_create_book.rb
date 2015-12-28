@@ -2,6 +2,7 @@ Lotus::Model.migration do
   change do
     create_table :books do
       primary_key :id
+      column :name, String
       column :image_url, String
       column :link, String
       column :description, String

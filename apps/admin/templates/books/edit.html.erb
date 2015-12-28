@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
     <%=
-      form_for :book, routes.path(:books) do
+      form_for :book, routes.path(:book, book.id), method: :patch do
+        div class: 'form-group' do
+          label :name
+          text_area :name, book.name, required: true, class: 'form-control', id: 'name'
+        end
+
         div class: 'form-group' do
           label :description
           text_area :description, book.description, required: true, class: 'form-control', id: 'description'
