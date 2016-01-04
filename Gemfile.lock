@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    bcrypt (3.1.10)
     byebug (6.0.2)
     capybara (2.5.0)
       mime-types (>= 1.16)
@@ -73,6 +74,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   bundler
   byebug
   capybara

@@ -3,6 +3,7 @@ collection :books do
   repository BookRepository
 
   attribute :id, Integer
+  attribute :name, String
   attribute :image_url, String
   attribute :link, String
   attribute :description, String
@@ -16,4 +17,14 @@ collection :books do
   attribute :file_type, Integer
   attribute :created_at, DateTime
   attribute :updated_at, DateTime
+end
+
+collection :users do
+  entity User
+  repository UserRepository
+
+  attribute :id, Integer
+  attribute :name, String
+  attribute :email, String
+  attribute :password_digest, String
 end

@@ -1,3 +1,6 @@
-get '/dashboard', to: 'book#dashboard'
-# Configure your routes here
-# See: http://www.rubydoc.info/gems/lotus-router/#Usage
+# get '/books', to: 'books#edit'
+get '/sessions', to: 'sessions#create'
+get '/login', to: 'sessions#new'
+# get '/books', to: 'books#destroy'
+resources :books
+resources :sessions

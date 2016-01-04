@@ -11,3 +11,16 @@
 .lotus-bookshelf-header a {
   text-decoration: none;
 }
+
+.bg-info {
+  z-index: -5;
+}
+
+header .lotus-signin-modal {
+  z-index: 10
+}
+
+header .open-signin-modal {
+  margin-bottom: -70px;
+  margin-top: 24px;
+}

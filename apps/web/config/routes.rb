@@ -1,3 +1,3 @@
+get '/books', to: 'books#destroy'
 get '/', to: 'books#index'
-get '/books', to: 'books#show'
-resources :books, only: [:index, :show]
+resources :books, only: [:index, :show, :destroy]

@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <%=
+      form_for :book, routes.path(:book, book.id), method: :patch do
+        div class: 'form-group' do
+          label :name
+          text_area :name, book.name, required: true, class: 'form-control', id: 'name'
+        end
+
+        div class: 'form-group' do
+          label :description
+          text_area :description, book.description, required: true, class: 'form-control', id: 'description'
+        end
+
+        div class: 'form-group' do
+          label :link
+          text_field :link, required: true, class: 'form-control', id: 'link', placeholder: 'Link', value: book.link
+        end
+
+        div class: 'form-group' do
+          label :publisher
+          text_field :publisher, required: true, class: 'form-control', id: 'publisher', placeholder: 'Publisher', value: book.publisher
+        end
+
+        div class: 'form-group' do
+          label :author
+          text_field :author, required: true, class: 'form-control', id: 'author', placeholder: 'Author', value: book.by
+        end
+
+        div class: 'form-group' do
+          label :isbn
+          text_field :isbn, required: true, class: 'form-control', id: 'isbn', placeholder: 'ISBN', value: book.isbn
+        end
+
+        div class: 'form-group' do
+          label :pages
+          number_field :pages, required: true, class: 'form-control', id: 'pages', placeholder: 'Pages', value: book.pages
+        end
+
+        div class: 'form-group' do
+          label :year
+          text_field :year, required: true, class: 'form-control', id: 'year', placeholder: 'Year', value: book.year
+        end
+
+        div class: 'form-group' do
+          label :language
+          text_field :language, required: true, class: 'form-control', id: 'language', placeholder: 'Language', value: book.languages
+        end
+
+        div class: 'form-group' do
+          label :size
+          text_field :file_size, required: true, class: 'form-control', id: 'size', placeholder: 'Size', value: book.file_size
+        end
+
+        div class: 'form-group' do
+          label :type
+          number_field :file_type, required: true, class: 'form-control', id: 'type', placeholder: 'Type', value: book.file_type
+        end
+
+        div class: 'form-group' do
+          submit 'Update', class: 'btn btn-default'
+          link_to 'Back', routes.path(:books)
+        end
+      end
+    %>
+  </div>
+</div>

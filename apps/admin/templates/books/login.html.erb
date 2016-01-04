@@ -1,0 +1,19 @@
+<div class="container flex-box">
+  <div class="row">
+    <div class="col-xs-12">
+      <%=
+        form_for :user, method: :post do
+          div class: 'form-group' do
+            label :name
+            text_field :name, required: true, class: 'form-control', placeholder: 'Name'
+          end
+          div class: 'form-group' do
+            label :password
+            text_field :password, required: true, class: 'form-control', placeholder: 'Password'
+          end
+          submit 'Log In', class: 'btn btn-default'
+        end
+      %>
+    </div>
+  </div>
+</div>

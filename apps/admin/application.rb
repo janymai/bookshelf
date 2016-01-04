@@ -1,5 +1,28 @@
 require 'lotus/helpers'
 
+module SessionAuthentication
+
+  def initialize(repository: UserRepository)
+    @repository = repository
+  end
+
+  def authenticate!
+    current_user
+  end
+
+  def save_user_to_session(user)
+    session[:user_id] = user.id
+  end
+
+  def logged_in?
+    !@current_user.nil?
+  end
+
+  def current_user
+    @current_user ||= @repository.find(session[:user_id])
+  end
+end
+
 module Admin
   class Application < Lotus::Application
     configure do
@@ -73,7 +96,7 @@ module Admin
       #
       # See: http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
       #
-      # sessions :cookie, secret: ENV['ADMIN_SESSIONS_SECRET']
+      sessions :cookie, secret: ENV['ADMIN_SESSIONS_SECRET']
 
       # Configure Rack middleware for this application
       #
@@ -188,8 +211,8 @@ module Admin
       #
       # See: http://www.rubydoc.info/gems/lotus-controller#Configuration
       controller.prepare do
-        # include MyAuthentication # included in all the actions
-        # before :authenticate!    # run an authentication before callback
+        include SessionAuthentication # included in all the actions
+        before :authenticate!    # run an authentication before callback
       end
 
       # Configure the code that will yield each time Admin::View is included
